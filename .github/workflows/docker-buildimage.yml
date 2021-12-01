@@ -11,8 +11,8 @@ on:
         required: true
       aws-secret-access-key:
         required: true
-      #aws-region:
-      #  required: true
+      aws-region:
+        required: true
 
 jobs:
   build-release:
@@ -24,6 +24,10 @@ jobs:
       - name: Configure AWS credentials
         id: config-aws
         uses: aws-actions/configure-aws-credentials@v1
+        secrets:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
   
       - name: Prepare
         id: prep
