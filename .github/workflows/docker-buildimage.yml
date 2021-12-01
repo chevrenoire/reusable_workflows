@@ -6,7 +6,6 @@ on:
       ECR_REPOSITORY:
         required: true
         type: string
-    secrets:
       aws-access-key-id:
         required: true
       aws-secret-access-key:
