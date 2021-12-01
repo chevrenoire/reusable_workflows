@@ -6,19 +6,20 @@ on:
       ECR_REPOSITORY:
         required: true
         type: string
-      aws-region:
+    secrets:
+      AWS_ACCESS_KEY_ID:
         required: true
         type: string
-    secrets:
-      aws-access-key-id:
+      AWS_SECRET_ACCESS_KEY:
         required: true
-      aws-secret-access-key:
+        type: string
+      AWS_REGION:
         required: true
-      aws-region:
-        required: true
+        type: string
 
 jobs:
   build-release:
+    name: Build Docker image and push to ECR
     runs-on: ubuntu-latest
   
     steps:
