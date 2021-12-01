@@ -6,6 +6,13 @@ on:
       ECR_REPOSITORY:
         required: true
         type: string
+    secrets:
+      aws-access-key-id:
+        required: true
+      aws-secret-access-key:
+        required: true
+      aws-region:
+        required: true
 
 jobs:
   build-release:
@@ -13,6 +20,14 @@ jobs:
   
     steps:
       - uses: actions/checkout@v2
+  
+      - name: Configure AWS credentials
+        id: config-aws
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
   
       - name: Prepare
         id: prep
