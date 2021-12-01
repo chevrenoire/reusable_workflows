@@ -7,11 +7,11 @@ on:
         required: true
         type: string
     secrets:
-      AWS_ACCESS_KEY_ID:
+      aws-access-key-id:
         required: true
-      AWS_SECRET_ACCESS_KEY:
+      aws-secret-access-key:
         required: true
-      AWS_REGION:
+      aws-region:
         required: true
 
 jobs:
